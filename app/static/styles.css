@@ -1,0 +1,172 @@
+/*
+ * Style sheet for patent claim search interface
+ *
+ * Includes layout styling for the page container, typography, form fields,
+ * filter controls, buttons, and result displays. 
+ */
+
+/* Base page styling */
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  background: #e6ecf3;
+  color: #333;
+  margin: 0;
+  padding: 2rem;
+}
+
+/* Central container that holds the entire content */
+.container {
+  max-width: 850px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Main heading style */
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
+  color: #2c3e50;
+}
+
+/* Form styling for query and filters */
+.search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Basic text input fields */
+.search-form input[type="text"] {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fefefe;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  transition: all 0.2s ease;
+}
+
+/* Focus state for inputs */
+.search-form input[type="text"]:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+/* Wrapper for filter inputs (classification, title, keyword) */
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Submit button styling */
+button {
+  align-self: center;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+}
+
+/* Button hover effect */
+button:hover {
+  background-color: #2980b9;
+  transform: translateY(-1px);
+}
+
+/* Header above results list */
+.results-header {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  color: #555;
+  text-align: center;
+}
+
+/* List of search results */
+.results {
+  list-style: none;
+  padding: 0;
+}
+
+/* Individual result card */
+.results li {
+  background: #fafafa;
+  padding: 1.25rem 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  border: 1px solid #e0e0e0;
+}
+
+/* Title inside a result */
+.results h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  color: #2c3e50;
+}
+
+/* Subtle style for document number text */
+.doc-number {
+  font-weight: normal;
+  color: #888;
+}
+
+/* Text to show when there are no results */
+.no-results {
+  color: #999;
+  font-style: italic;
+  text-align: center;
+}
+
+/* Group of filter controls shown side-by-side */
+.filter-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Filter inputs and dropdowns */
+.filter-group input,
+.filter-group select {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  flex: 1;
+}
+
+/* Dropdown-specific styling */
+.filter-group select {
+  max-width: 8rem;
+  flex-shrink: 0;
+  background-color: #fefefe;
+  color: #333;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  appearance: none;
+
+  /* Custom arrow icon using inline SVG */
+  background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2rem; 
+}
+
+/* Focus state for dropdowns */
+.filter-group select:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+  background-color: #fff;
+}

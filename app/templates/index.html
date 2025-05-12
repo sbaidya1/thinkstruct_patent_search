@@ -1,0 +1,76 @@
+{#
+  Template that renders the main interface for a patent claim search tool.
+  Includes:
+    - A search form where users can enter their query and optional filters
+    - Support for filtering by classification code, keyword, and exact title
+    - Options to set filters as "Required" or "Preferred"
+    - A result list showing matched patent claims, including metadata and relevance scores
+
+  Template extends base.html for consistent layout and styling.
+#}
+
+{% extends "base.html" %}
+
+{% block title %}Patent Search{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h1>Patent Claim Search</h1>
+
+    {# Search form — allows user to input query and optional filters #}
+    <form method="POST" action="/search" class="search-form">
+      <input type="text" name="query" placeholder="Enter your query..." required
+             value="{{ query or '' }}">
+
+      <div class="filter-group">
+        <input type="text" name="classification" placeholder="Classification code (e.g. B60B)"
+               value="{{ classification or '' }}">
+        <select name="classification_mode">
+          <option value="required" {% if classification_mode == "required" %}selected{% endif %}>Required</option>
+          <option value="preferred" {% if classification_mode == "preferred" %}selected{% endif %}>Preferred</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <input type="text" name="keyword" placeholder="Keyword in title or abstract"
+               value="{{ keyword or '' }}">
+        <select name="keyword_mode">
+          <option value="required" {% if keyword_mode == "required" %}selected{% endif %}>Required</option>
+          <option value="preferred" {% if keyword_mode == "preferred" %}selected{% endif %}>Preferred</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <input type="text" name="title" placeholder="Specfic title"
+               value="{{ title or '' }}">
+        <select name="title_mode">
+          <option value="required" {% if title_mode == "required" %}selected{% endif %}>Required</option>
+          <option value="preferred" {% if title_mode == "preferred" %}selected{% endif %}>Preferred</option>
+        </select>
+      </div>
+
+      <button type="submit">Search</button>
+    </form>
+
+    {# Heading for the results section (if query submitted) #}
+    {% if query %}
+      <h2 class="results-header">Results for: "<em>{{ query }}</em>"</h2>
+    {% endif %}
+
+    {# Display serach results (if exists) #}
+    {% if results %}
+      <ul class="results">
+        {% for result in results %}
+          <li>
+            <h3>{{ result.title }} <span class="doc-number">({{ result.document_number }})</span></h3>
+            <p><strong>Classification:</strong> {{ result.classification }}</p>
+            <p><strong>Relevant claim:</strong> {{ result.claim }}</p>
+            <p><strong>Score:</strong> {{ result.score }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+    {% elif query %}
+      <p class="no-results">No results found.</p>
+    {% endif %}
+  </div>
+{% endblock %}

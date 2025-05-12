@@ -1,0 +1,10 @@
+# Rename this file to .env and fill in your own OpenAI API key
+
+# OpenAI API key used for embeddings and reranking
+OPENAI_API_KEY=your-api-key-here
+
+# Directory to persist ChromaDB index
+CHROMA_PERSIST_DIR=chroma_db
+
+# Secret key for dev
+SECRET_KEY=dev-fallback-secret

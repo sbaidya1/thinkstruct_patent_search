@@ -14,14 +14,13 @@ For my enhancements I implemented hybrid search and two phase ranking. I chose t
 
 ### Part 1 : Core search function 
 * Loads and indexes patent claim data from JSON files 
-  - Note: patents with missing fields are included as long as they are not missing the claim field. <br>
-    For the purpose of filtering, a missing field is treated the same as a nonmatching field. 
+  - Note: Patents with missing fields are included as long as they are not missing the claim field. For the purpose of filtering, a missing field is treated the same as a nonmatching field. 
 * Uses OpenAI’s text-embedding-3-small to embed query and patent claims (rest of patent data is stored as metadata for filtering)
 * Performs semantic search with ChromaDB and retrieves top-75 matches
 
 ### Part 2 : Hybrid search 
 * Supports filtering by:
-    * Classification code (required or preferred)
+    * Classification code
     * Keywords in title/abstract
     * Exact title
 * Filters can be strict (exclusion) or soft (score boosting) 

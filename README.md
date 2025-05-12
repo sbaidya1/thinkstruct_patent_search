@@ -27,7 +27,7 @@ For my enhancements I implemented hybrid search and two phase ranking. I chose t
 * Filters can be strict (exclusion) or soft (score boosting) 
 * On efficiency: 
   - Time without hybrid search averaged 0.712 s while time with hybrid searching averaged 0.719 s (over 10 trials, tested before adding two phase searching)
-  - While this time difference is not huge for this relatevly smaller dataset, it would be problematic for a larger dataset. In this prototype, I implemented hybrid search by running full semantic retrieval followed by symbolic post-filtering. This post-filtering strategy is not optimal. In a production setting, I would filter using SQL first and only semantically search relevant claims — either by dynamically building a Chroma index on filtered results or switching to a database like FAISS or Qdrant that supports hybrid search natively.
+  - While this time difference is not huge for this relatively smaller dataset, it would be problematic for a larger dataset. In this prototype, I implemented hybrid search by running full semantic retrieval followed by symbolic post-filtering. This post-filtering strategy is not optimal. In a production setting, I would filter using SQL first and only semantically search relevant claims — either by dynamically building a Chroma index on filtered results or switching to a database like FAISS or Qdrant that supports hybrid search natively.
 
 ### Part 2 : Two-phase searching
 * Implements reranking of semantic results using the cross-encoder/ms-marco-MiniLM-L-6-v2 model

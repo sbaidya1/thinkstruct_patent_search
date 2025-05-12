@@ -22,7 +22,7 @@ def run_search(query, persist_dir, classification, keyword, title,
   and applies metadata-based preference weighting.
 
   Returns: 
-    A list of top-ranked search results (max 5), formatted for display
+    A list of top-ranked search results (max 15), formatted for display
   """
   # phase 1: semantic vector search using OpenAI embeddings
   candidates = semantic_search(query, persist_dir)
@@ -39,7 +39,7 @@ def run_search(query, persist_dir, classification, keyword, title,
   # combine cross-encoder scores and filter weights to get final score
   combined = combine_reranking(candidates, cross_scores, filter_weights)
 
-  results = format_results(combined, limit=5)
+  results = format_results(combined, limit=15)
 
   return results
 
@@ -50,7 +50,7 @@ def semantic_search(query, persist_dir):
   """
   embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
   vectordb = Chroma(persist_directory=persist_dir, embedding_function=embeddings)
-  return vectordb.similarity_search(query, k=100)
+  return vectordb.similarity_search(query, k=75)
 
 
 def rerank_with_cross_encoder(query, docs):
@@ -120,7 +120,7 @@ def combine_reranking(docs, cross_scores, filter_weights):
   return combined
 
 
-def format_results(scored_docs, limit=5):
+def format_results(scored_docs, limit=15):
   """
   Sorts combined scores and formats top results for template rendering.
 

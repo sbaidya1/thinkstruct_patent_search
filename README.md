@@ -1,5 +1,7 @@
 # Patent Claim Search Engine 
 
+[Click here to watch the 2-minute demo](https://drive.google.com/file/d/1pI9XfK1S39tWiVsNsW1mUeD3Ned35tBK/view?usp=sharing)
+
 ## Problem Statement 
 Patent professionals often struggle to efficiently find relevant and related patent claims, which are the legally enforceable core of a patent. Traditional keyword search tools are limited — they often miss semantically similar language or fail to support domain-specific filters like classification codes or technical terminology in abstracts and titles. This makes it difficult to identify prior art or overlapping inventions, especially when language varies but concepts align.
 

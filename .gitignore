@@ -16,7 +16,7 @@ instance/
 Thumbs.db
 
 # Python virtualenv
-venv/
+env/
 .env/
 .venv/
 
